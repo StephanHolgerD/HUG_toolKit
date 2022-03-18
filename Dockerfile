@@ -55,6 +55,16 @@ RUN cd /usr/local/bin && \
  chmod +x bedtools 
  
  
+
+RUN cd /tmp && \
+wget --no-check-certificate  https://github.com/samtools/htslib/releases/download/1.9/htslib-1.9.tar.bz2 && \
+tar -vxjf htslib-1.9.tar.bz2 && \
+cd htslib-1.9  && \
+make && \
+chmod +x tabix && \
+chmod +x bgzip && \
+cp tabix bgzip /usr/local/bin 
+
 RUN mkdir /data
 
 # set $PATH (honestly unnecessary here, lol) and locale settings for singularity compatibility
